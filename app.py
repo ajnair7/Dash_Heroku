@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[2]:
 
 
 import dash
@@ -10,7 +10,8 @@ import dash_html_components as html
 import plotly.graph_objs as go
 import pandas as pd
 
-app = dash.Dash()
+app = dash.Dash(__name__)
+server = app.server
 
 df = pd.read_csv('nama_10_gdp_1_Data.csv')
 
@@ -20,7 +21,7 @@ country_indicators = df['GEO'].unique()
 
 app.layout = html.Div([
     html.Div([
-        html.H1('Graph1: Scatter Plot'),
+
         html.Div([
             dcc.Dropdown(
                 id='xaxis-column',
@@ -68,12 +69,9 @@ app.layout = html.Div([
         marks={str(year): str(year) for year in df['TIME'].unique()}
     ),
     
-    html.Br(),
-    
     html.Hr(),
     
     html.Div([
-        html.H1('Graph2: Line Plot'),
         html.Div([
             dcc.Dropdown(
                 id='yaxis-column2',
@@ -174,4 +172,10 @@ def update_graph1(yaxis_column, yaxis_type, country_value, value_format):
 
 if __name__ == '__main__':
     app.run_server()
+
+
+# In[ ]:
+
+
+
 
