@@ -21,7 +21,7 @@ country_indicators = df['GEO'].unique()
 
 app.layout = html.Div([
     html.Div([
-
+        html.H1('Graph1: Scatter Plot'),
         html.Div([
             dcc.Dropdown(
                 id='xaxis-column',
@@ -69,9 +69,12 @@ app.layout = html.Div([
         marks={str(year): str(year) for year in df['TIME'].unique()}
     ),
     
+    html.Br(),
+    
     html.Hr(),
     
     html.Div([
+        html.H1('Graph2: Line Plot'),
         html.Div([
             dcc.Dropdown(
                 id='yaxis-column2',
@@ -172,10 +175,3 @@ def update_graph1(yaxis_column, yaxis_type, country_value, value_format):
 
 if __name__ == '__main__':
     app.run_server()
-
-
-# In[ ]:
-
-
-
-
